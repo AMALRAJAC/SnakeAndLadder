@@ -1,6 +1,7 @@
 import java.util.Scanner;
 public class SnakeLadder {
 	public static int temp=0;
+	public static int count=0;
 	
 	    public static void main (String [] args)
 	    {
@@ -17,7 +18,7 @@ public class SnakeLadder {
 	        	//user input
 	        	int player1Position1 =(int) Math.floor(Math.random()*10)%6 +1 ;
 	        	System.out.println("dice number = "+player1Position1);
-	        	
+	        	count=count+1;
 	        if (temp+player1Position1<=100) {
 	        	
 	        	temp = temp +player1Position1;
@@ -29,6 +30,7 @@ public class SnakeLadder {
 	        	
 	        	if (temp==100) {
 	        		System.out.println("player won");
+	        		System.out.println("number of times dice rolled= "+count);
 	        		System.exit(0);
 	        	}
 	        }
