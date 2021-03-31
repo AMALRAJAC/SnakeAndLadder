@@ -1,6 +1,7 @@
 import java.util.Scanner;
 public class SnakeLadder {
 	public static int temp=0;
+	public static int temp1=0;
 	public static int count=0;
 	
 	    public static void main (String [] args)
@@ -17,31 +18,46 @@ public class SnakeLadder {
 	        	
 	        	//user input
 	        	int player1Position1 =(int) Math.floor(Math.random()*10)%6 +1 ;
-	        	System.out.println("dice number = "+player1Position1);
+	        	int player2Position1 =(int) Math.floor(Math.random()*10)%6 +1 ;
+	        	System.out.println("dice number of player1 = "+player1Position1);
+	        	System.out.println("dice number of player2 = "+player2Position1);
 	        	count=count+1;
-	        if (temp+player1Position1<=100) {
+	        if (temp+player1Position1<=100 && temp1+player2Position1<=100) {
 	        	
 	        	temp = temp +player1Position1;
 	        	temp=snakeBit(temp);
 	        	temp=ladder(temp);
-	        	System.out.println("player position is: "+temp);
+	        	System.out.println("player1 position is: "+temp);
 	        	
+	        	temp1 = temp1 +player2Position1;
+	        	temp1=snakeBit(temp1);
+	        	temp1=ladder(temp1);
+	        	System.out.println("player2 position is: "+temp1);
 	        	//condition for checking winner
 	        	
-	        	if (temp==100) {
-	        		System.out.println("player won");
+	        	if (temp==100 ||temp1==100) {
+	        		if(temp==100) {
+	        			System.out.println("player1 won");
+		        		System.out.println("number of times dice rolled= "+count);
+		        		System.exit(0);	
+	        		}else {
+	        		System.out.println("player2 won");
 	        		System.out.println("number of times dice rolled= "+count);
 	        		System.exit(0);
-	        	}
+	        	}}
 	        }
-	        if(temp<0) {
-	        	// if number goes negative
-        		temp=0;
+	        if(temp<0 ||temp1<0) {
+	        	if(temp<0) {
+	        		temp=0;
+	        	}else {
+	        		temp1=0;
+	        	}
         	}
 	        }
 	        if(check==0) {
 	        	// player want to pause play
-	        	System.out.println("player stays at "+temp);
+	        	System.out.println("player1 stays at "+temp);
+	        	System.out.println("player2 stays at "+temp1);
 	        }
 	    	}
 	    }
