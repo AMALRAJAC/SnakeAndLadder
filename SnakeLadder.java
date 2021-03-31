@@ -1,4 +1,4 @@
-import java.util.Scanner;
+
 public class SnakeLadder {
 	public static int temp=0;
 	
@@ -11,8 +11,8 @@ public class SnakeLadder {
 	        
 	        for (int i=0;temp<100;i++) {
 	        	//user input
-	        	Scanner sc = new Scanner(System.in);
-	        	int player1Position1 = sc.nextInt();
+	        	int player1Position1 =(int) Math.floor(Math.random()*10)%6 +1 ;
+	        	System.out.println(player1Position1);
 	        if (player1Position1 <=6 && player1Position1>0 && temp+player1Position1<=100) {
 	        	temp = temp +player1Position1;
 	        	System.out.println("player position is"+temp);
