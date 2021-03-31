@@ -30,10 +30,7 @@ public class SnakeLadder {
 	        }
 	    	}
 	    }
-	    private static void exit(int i) {
-			// TODO Auto-generated method stub
-			
-		}
+	    
 		//defining snake bits in program
 	    private static int snakeBit(int temp) {
 			switch(temp) {
