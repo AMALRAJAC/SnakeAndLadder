@@ -29,16 +29,16 @@ public class SnakeLadder {
 	        
 	        							//condition for checking winner
 	        	
-	        								if (temp==100 ||temp1==100) {
+	        							
 	        										if(temp==100) {
 	        												System.out.println("\n\n\t\t\t\t|||*****player1 won*******|||");
 	        												System.out.println("\n\t\t\t\tnumber of times dice rolled= "+count);
 	        												System.exit(0);	
 	        												}
-	        								}
+	        								
 	        						}
-	        							if(temp<0) {
-	        									temp=0;
+	        						if(temp<0) {
+	        							temp=0;
 	        							}
 	        						
 	        		}
