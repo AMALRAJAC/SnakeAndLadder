@@ -8,43 +8,44 @@ public class SnakeLadder {
 	    {
 	    	for (int i=0;temp<=100;i++) {
 	    		
-	    	System.out.println("\n\n\t\t\t\t********enter 1 to play again********** ");
-	    	System.out.println("\t\t\t\t********enter 0 to pause play ********* ");
+	    		System.out.println("\n\n\t\t\t\t********enter 1 to play again********** ");
+	    		System.out.println("\t\t\t\t********enter 0 to pause play ********* ");
 	    	
-	    	Scanner sc = new Scanner(System.in);
-        	int check  = sc.nextInt();
+	    		Scanner sc = new Scanner(System.in);
+	    		int check  = sc.nextInt();
 	        
-	        if ( check ==1) {
+	    		if ( check ==1) {
 	        	
 	        	//user input
-	        	int player1Position1 =(int) Math.floor(Math.random()*10)%6 +1 ;
-	        	int player2Position1 =(int) Math.floor(Math.random()*10)%6 +1 ;
-	        	System.out.println("\t\t\t\tdice number of player1 = "+player1Position1);
-	        	System.out.println("\t\t\t\tdice number of player2 = "+player2Position1);
-	        	count=count+1;
-	        if (temp+player1Position1<=100 && temp1+player2Position1<=100) {
+	    				int player1Position1 =(int) Math.floor(Math.random()*10)%6 +1 ;
+	    				int player2Position1 =(int) Math.floor(Math.random()*10)%6 +1 ;
+	    				System.out.println("\t\t\t\tdice number of player1 = "+player1Position1);
+	    				System.out.println("\t\t\t\tdice number of player2 = "+player2Position1);
+	    				count=count+1;
+	    					if (temp+player1Position1<=100 && temp1+player2Position1<=100) {
 	        	
-	        	temp = temp +player1Position1;
-	        	temp=snakeBit(temp);
-	        	temp=ladder(temp);
-	        	System.out.println("\n\n\n\t\t\t\tplayer1 position is: "+temp);
+	    						temp = temp +player1Position1;
+	    						temp=snakeBit(temp);
+	    						temp=ladder(temp);
+	    						System.out.println("\n\n\n\t\t\t\tplayer1 position is: "+temp);
 	        	
-	        	temp1 = temp1 +player2Position1;
-	        	temp1=snakeBit(temp1);
-	        	temp1=ladder(temp1);
-	        	System.out.println("\t\t\t\tplayer2 position is: "+temp1);
-	        	//condition for checking winner
+	    						temp1 = temp1 +player2Position1;
+	    						temp1=snakeBit(temp1);
+	    						temp1=ladder(temp1);
+	    						System.out.println("\t\t\t\tplayer2 position is: "+temp1);
+	    						//condition for checking winner
 	        	
-	        	if (temp==100 ||temp1==100) {
-	        		if(temp==100) {
-	        			System.out.println("\n\n\t\t\t\t|||*****player1 won*******|||");
-		        		System.out.println("\n\t\t\t\tnumber of times dice rolled= "+count);
-		        		System.exit(0);	
-	        		}else {
-	        		System.out.println("\n\n\t\t\t\t|||****player2 won******|||");
-	        		System.out.println("\n\t\t\t\tnumber of times dice rolled= "+count);
-	        		System.exit(0);
-	        	}}
+	    							if (temp==100 ||temp1==100) {
+	    									if(temp==100) {
+	    										System.out.println("\n\n\t\t\t\t|||*****player1 won*******|||");
+	    										System.out.println("\n\t\t\t\tnumber of times dice rolled= "+count);
+	    										System.exit(0);	
+	    									}else {
+	    										System.out.println("\n\n\t\t\t\t|||****player2 won******|||");
+	    										System.out.println("\n\t\t\t\tnumber of times dice rolled= "+count);
+	    										System.exit(0);
+	    									}
+	    							}		
 	        }
 	        if(temp<0 ||temp1<0) {
 	        	if(temp<0) {
@@ -53,14 +54,14 @@ public class SnakeLadder {
 	        		temp1=0;
 	        	}
         	}
-	        }
-	        if(check==0) {
+	 }
+	 if(check==0) {
 	        	// player want to pause play
 	        	System.out.println("player1 stays at "+temp);
 	        	System.out.println("player2 stays at "+temp1);
-	        }
-	    	}
-	    }
+	  }
+   }
+}
 		//defining snake bits in program
 	    private static int snakeBit(int temp) {
 			switch(temp) {
@@ -137,4 +138,4 @@ public class SnakeLadder {
 			
 			
 		}
-}	                
+}	                	                
