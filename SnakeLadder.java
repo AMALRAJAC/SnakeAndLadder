@@ -27,28 +27,41 @@ public class SnakeLadder {
 	    					if (temp+diceRoll<=100 && temp1+diceRoll2<=100) {
 	        	
 	    						temp = temp +diceRoll;
-	    						temp=snakeBit(temp);	
 	    						int flag=temp;
+	    						temp=snakeBit(temp);
+	    						if(temp!=flag) {
+	    							System.out.println(" player 1 position after getting snake bit is = "+temp);
+	    						}
+	    						 flag=temp;
 	    						temp=ladder(temp);
                                 if(temp!=flag) {
                                 	diceRoll=playAgain(diceRoll);
+                                	System.out.println("\n\t\t\t\t player1 position after getting ladder is: "+temp);
                                 	System.out.println("player1 got another chance");
-                                	System.out.println("\t\t\t\t new dice number of player1 = "+diceRoll);
+                                	System.out.println("\t\t\t\t new dice number of player1 after getting ladder is = "+diceRoll);
+                                	
                                 	temp = temp +diceRoll;
                                 }
-	    						System.out.println("\n\n\n\t\t\t\tplayer1 position is: "+temp);
-	        	
+	    						
 	    						temp1 = temp1 +diceRoll2;
-	    						temp1=snakeBit(temp1);
 	    						int flag1=temp1;
+	    						temp1=snakeBit(temp1);
+	    						if(temp1!=flag1) {
+	    							System.out.println(" player 2 position after getting snake bit is = "+temp1);
+	    						}
+	    						 flag1=temp1;
 	    						temp1=ladder(temp1);
 	    						 if(temp1!=flag1) {
 	                                	diceRoll2=playAgain(diceRoll2);
+	                                	System.out.println("\n\t\t\t\t player2 position after getting ladder is: "+temp1);
 	                                	System.out.println("player2 got another chance");
-	                                	System.out.println("\t\t\t\t new dice number of player2 = "+diceRoll2);
+	                                	System.out.println("\t\t\t\t new dice number of player2 after getting ladder is = "+diceRoll2);
+	                                	
 	                                	temp1 = temp1 +diceRoll2;
 	                                }
-	    						System.out.println("\t\t\t\tplayer2 position is: "+temp1);
+	    						 System.out.println("\n\n\n\t\t\t\tfinal player1 position is: "+temp);
+	    						System.out.println("\t\t\t\tfinal player2 position is: "+temp1);
+	    						
 	    						//condition for checking winner
 	        	
 	    							if (temp==100 ||temp1==100) {
@@ -91,7 +104,7 @@ public class SnakeLadder {
 				temp=temp-10;
 				break;
 			case 54:
-				System.out.println("got snake bit at 54");
+				System.out.println("got snake bit  at 54");
 				temp=temp-20;
 				break;
 			case 62:
