@@ -1,175 +1,183 @@
-import java.util.Scanner;
+
 public class SnakeLadder {
 	public static int temp=0;
-	public static int temp1=0;
 	public static int count=0;
-	public static int diceRoll=0;
-	public static int diceRoll2=0;
+	public static int dice=0;
+	public static int playerposition=0;
+	public static int playerposition1=0;
+	public static int dice1=0;
+	public static int temp1=0;
 	
-	    public static void main (String [] args)
-	    {
-	    	for (int i=0;temp<=100;i++) {
-	    		
-	    		System.out.println("\n\n\t\t\t\t********enter 1 to play again********** ");
-	    		System.out.println("\t\t\t\t********enter 0 to pause play ********* ");
-	    	
-	    		Scanner sc = new Scanner(System.in);
-	    		int check  = sc.nextInt();
-	        
-	    		if ( check ==1) {
-	        	
-	        	//user input
-	    				diceRoll=playAgain(diceRoll);
-	    				diceRoll2=playAgain(diceRoll2);
-	    				System.out.println("\t\t\t\tdice number of player1 = "+diceRoll);
-	    				System.out.println("\t\t\t\tdice number of player2 = "+diceRoll2);
-	    				count=count+1;
-	    					if (temp+diceRoll<=100 && temp1+diceRoll2<=100) {
-	        	
-	    						temp = temp +diceRoll;
-	    						int flag=temp;
-	    						temp=snakeBit(temp);
-	    						if(temp!=flag) {
-	    							System.out.println(" player 1 position after getting snake bit is = "+temp);
-	    						}
-	    						 flag=temp;
-	    						temp=ladder(temp);
-                                if(temp!=flag) {
-                                	diceRoll=playAgain(diceRoll);
-                                	System.out.println("\n\t\t\t\t player1 position after getting ladder is: "+temp);
-                                	System.out.println("player1 got another chance");
-                                	System.out.println("\t\t\t\t new dice number of player1 after getting ladder is = "+diceRoll);
-                                	
-                                	temp = temp +diceRoll;
-                                }
-	    						
-	    						temp1 = temp1 +diceRoll2;
-	    						int flag1=temp1;
-	    						temp1=snakeBit(temp1);
-	    						if(temp1!=flag1) {
-	    							System.out.println(" player 2 position after getting snake bit is = "+temp1);
-	    						}
-	    						 flag1=temp1;
-	    						temp1=ladder(temp1);
-	    						 if(temp1!=flag1) {
-	                                	diceRoll2=playAgain(diceRoll2);
-	                                	System.out.println("\n\t\t\t\t player2 position after getting ladder is: "+temp1);
-	                                	System.out.println("player2 got another chance");
-	                                	System.out.println("\t\t\t\t new dice number of player2 after getting ladder is = "+diceRoll2);
-	                                	
-	                                	temp1 = temp1 +diceRoll2;
-	                                }
-	    						 System.out.println("\n\n\n\t\t\t\tfinal player1 position is: "+temp);
-	    						System.out.println("\t\t\t\tfinal player2 position is: "+temp1);
-	    						
-	    						//condition for checking winner
-	        	
-	    							if (temp==100 ||temp1==100) {
-	    									if(temp==100) {
-	    										System.out.println("\n\n\t\t\t\t|||*****player1 won*******|||");
-	    										System.out.println("\n\t\t\t\tnumber of times dice rolled= "+count);
-	    										System.exit(0);	
-	    									}else {
-	    										System.out.println("\n\n\t\t\t\t|||****player2 won******|||");
-	    										System.out.println("\n\t\t\t\t new number of times dice rolled= "+count);
-	    										System.exit(0);
-	    									}
-	    							}		
-	        }
-	        if(temp<0 ||temp1<0) {
-	        	if(temp<0) {
-	        		temp=0;
-	        	}else {
-	        		temp1=0;
-	        	}
-        	}
-	 }
-	 if(check==0) {
-	        	// player want to pause play
-	        	System.out.println("player1 stays at "+temp);
-	        	System.out.println("player2 stays at "+temp1);
-	  }
-   }
+	public static void main(String[] args) {
+		
+		for(int i=0;;i++) {
+			System.out.println("\n----------------------------------------------------------------------------");
+			System.out.println("\n\t\t\t||player1 position==="+playerposition+"||");
+			System.out.println("\n\t\t\t||player2 position==="+playerposition1+"||");
+			System.out.println("\n----------------------------------------------------------------------------");
+			playcheck();
+			System.out.println("\n\t\t\t||player1 position==="+playerposition+"||");
+			System.out.println("\n//////////////////////////////////////////////////////////////////////////////");
+			playcheck1();
+			System.out.println("\n\t\t\t||player1 position==="+playerposition1+"||");
+			
+			if (playerposition<0) {
+				playerposition=0;
+				System.out.println("\nposition set to 0");
+			}
+			if(playerposition>100) {
+				playerposition=100;
+				System.out.println("\nposition set to 100");
+			}
+			if(playerposition==100) {
+				System.out.println("\n----------------------------------------------------------------------------");
+				System.out.println("\n\t\t\t||player1 won||");
+				System.out.println("\n\t\t\tcount= "+count);
+				System.out.println("\n----------------------------------------------------------------------------");
+				System.exit(0);
+			}
+			
+			if(playerposition1<0) {
+				playerposition1=0;
+				System.out.println("\nposition set to 0");
+			}
+			if(playerposition1>100) {
+				playerposition1=100;
+				System.out.println("\nposition set to 100");
+			}
+			if(playerposition1==100) {
+				System.out.println("\n----------------------------------------------------------------------------");
+				System.out.println("\n\t\t\t||player2 won||");
+				System.out.println("\n\t\t\tcount= "+count);
+				System.out.println("\n----------------------------------------------------------------------------");
+				System.exit(0);
+			}
+			count=count+2;
+		}
+	}
+	//player1 code
+	
+	public static int ladder(int dice) {
+		playerposition=playerposition+dice;
+		System.out.print("\nplayer1 position="+playerposition);
+		
+		if (playerposition<0) {
+			playerposition=0;
+			System.out.println("\nposition set to 0");
+		}
+		if(playerposition>100) {
+			playerposition=100;
+			System.out.println("\nposition set to 100");
+		}
+
+		if(playerposition==100) {
+			System.out.println("\n----------------------------------------------------------------------------");
+			System.out.println("\n\t\t\t||player1 won||");
+			System.out.println("\n\t\t\tcount= "+count);
+			System.out.println("\n----------------------------------------------------------------------------");
+			System.exit(0);
+		}
+		System.out.print("\n\nnext play");
+		playcheck();
+		count=count+1;
+		return 0;
+	}
+	public static int snake(int dice) {
+		playerposition=playerposition-dice;
+		System.out.print("\nplayer1 position="+playerposition);
+		return 0;
+	}
+	public static int dice() {
+		int dice= (int)Math.floor(Math.random()*10)%6+1;
+		System.out.println("\nplayer1 dice number= "+dice);
+			return dice;
+	}
+	public static int playcheck() {
+		int x= (int)Math.floor(Math.random()*10)%3+1;
+		play(x);
+		return 0;
+	}
+	public static int play(int x) {
+		switch(x) {
+		case 1:
+			System.out.print("\n player1 got ladder");
+			temp=dice();
+			ladder(temp);
+			break;
+		case 2:
+			System.out.print("\nplayer1 got snake bit");
+			temp=dice();
+			snake(temp);
+			break;
+		case 3:
+			System.out.print("\n no play for player 1");
+			break;
+					
+		}
+		
+		return 0;
+	}	
+	
+	//player2 code
+	public static int ladder1(int dice1) {
+		playerposition1=playerposition1+dice1;
+		System.out.print("\nplayer2 position="+playerposition1);
+		
+		if(playerposition1<0) {
+			playerposition1=0;
+			System.out.println("\nposition set to 0");
+		}
+		if(playerposition1>100) {
+			playerposition1=100;
+			System.out.println("\nposition set to 100");
+		}
+		if(playerposition1==100) {
+			System.out.println("\n----------------------------------------------------------------------------");
+			System.out.println("\n\t\t\t||player2 won||");
+			System.out.println("\n\t\t\tcount= "+count);
+			System.out.println("\n----------------------------------------------------------------------------");
+			System.exit(0);
+		}
+		System.out.print("\n\nnext play");
+		playcheck1();
+		count=count+1;
+		return 0;
+	}
+	public static int snake1(int dice1) {
+		playerposition1=playerposition1-dice1;
+		System.out.print("\nplayer2 position="+playerposition1);
+		return 0;
+	}
+	public static int dice1() {
+		int dice1= (int)Math.floor(Math.random()*10)%6+1;
+		System.out.println("\nplayer2 dice number= "+dice1);
+			return dice1;
+		}
+	
+	public static int playcheck1() {
+		int x1= (int)Math.floor(Math.random()*10)%3+1;
+		play1(x1);
+		return 0;
+		
+	}
+public static int play1(int x) {
+	switch(x) {
+	case 1:
+		System.out.print("\n player2 got  ladder");
+		temp1=dice1();
+		ladder1(temp1);
+		break;
+	case 2:
+		System.out.print("\n player2 got snake bit");
+		temp1=dice1();
+		snake1(temp1);
+		break;
+	case 3:
+		System.out.print("\n no play for player2");
+		break;
+				
+	}
+	
+	return 0;
+}	
 }
-	    private static int playAgain(int player1Position1) {
-	    	int player1Position11 =(int) Math.floor(Math.random()*10)%6 +1 ;
-			return player1Position11;
-	    	
-	    }
-		//defining snake bits in program
-	    private static int snakeBit(int temp) {
-			switch(temp) {
-			case 17:
-				System.out.println("got snake bit at 17");
-				temp=temp-10;
-				break;
-			case 54:
-				System.out.println("got snake bit  at 54");
-				temp=temp-20;
-				break;
-			case 62:
-				System.out.println("got snake bit at 62");
-				temp=temp-44;
-				break;
-			case 64:
-				System.out.println("got snake bit at 64");
-				temp=temp-4;
-				break;
-			case 87:
-				System.out.println("got snake bit at 87");
-				temp=temp-63;
-				break;
-			case 93:
-				System.out.println("got snake bit at 93");
-				temp=temp-20;
-				break;
-			case 95:
-				System.out.println("got snake bit at 95");
-				temp=temp-20;
-				break;
-			case 99:
-				System.out.println("got snake bit at 99");
-				temp=temp-21;
-				break;	
-			
-			}
-			return temp;
-			
-		}
-	    //defining ladders in program
-		private static int ladder(int temp) {
-			switch(temp) {
-			case 4:
-				System.out.println("got ladder at 4");
-				temp=temp+10;
-				break;
-			case 9:
-				System.out.println("got ladder at 9");
-				temp=temp+22;
-				break;
-			case 20:
-				System.out.println("got ladder at 20");
-				temp=temp+18;
-				break;
-			case 40:
-				System.out.println("got ladder at 40");
-				temp=temp+19;
-				break;
-			case 28:
-				System.out.println("got ladder at 28");
-				temp=temp+56;
-				break;
-			case 63:
-				System.out.println("got ladder at 63");
-				temp=temp+18;
-				break;
-			case 71:
-				System.out.println("got ladder at 71");
-				temp=temp+20;
-				break;
-			}
-			return temp;
-			
-			
-		}
-}	                
